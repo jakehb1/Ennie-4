@@ -1,0 +1,36 @@
+/* ─── Design Tokens ─── */
+export const T = {
+  bg: "#FFFFFF",
+  surface: "#FFFFFF",
+  card: "#FFFFFF",
+  cardHover: "#FAFAFA",
+  border: "#EBEBEB",
+  borderLight: "#F0F0F0",
+  text: "#0A0A0A",
+  textMuted: "#6B6B6B",
+  textDim: "#AAAAAA",
+  accent: "#8B3FFF",
+  accentDim: "rgba(139,63,255,0.08)",
+  accentGlow: "rgba(139,63,255,0.18)",
+  warm: "#E07830",
+  warmDim: "rgba(224,120,48,0.08)",
+  danger: "#A32D2D",
+  dangerDim: "rgba(163,45,45,0.08)",
+  blue: "#185FA5",
+  blueDim: "rgba(24,95,165,0.08)",
+  purple: "#8B3FFF",
+  purpleDim: "rgba(139,63,255,0.08)",
+  pink: "#E88FB0",
+  pinkDim: "rgba(232,143,176,0.12)",
+  green: "#2E9E68",
+  greenDim: "rgba(46,158,104,0.10)",
+};
+
+export const fonts = {
+  heading: "Syne_700Bold",
+  headingBold: "Syne_800ExtraBold",
+  body: "DMSans_400Regular",
+  bodyMedium: "DMSans_500Medium",
+  bodySemiBold: "DMSans_600SemiBold",
+  bodyBold: "DMSans_700Bold",
+};
