@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const API_URL = __DEV__
   ? "http://localhost:3000"
-  : "https://ennie-api.up.railway.app";
+  : "https://ennie-4-production.up.railway.app";
 
 class ApiService {
   /* ── Token management ── */
