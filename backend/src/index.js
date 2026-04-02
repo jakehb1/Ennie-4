@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
@@ -19,7 +20,20 @@ const app = express();
 
 // Security & middleware
 app.use(cors());
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://unpkg.com"],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+        fontSrc: ["'self'", "https://fonts.gstatic.com"],
+        imgSrc: ["'self'", "data:", "blob:"],
+        connectSrc: ["'self'"],
+      },
+    },
+  })
+);
 app.use(morgan("combined"));
 app.use(express.json());
 
@@ -33,8 +47,11 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// Health check
-app.get("/", (req, res) => {
+// Serve static frontend
+app.use(express.static(path.join(__dirname, "..", "public")));
+
+// API health check
+app.get("/api/health", (req, res) => {
   res.json({
     status: "ok",
     service: "Ennie Healing Platform API",
@@ -53,9 +70,16 @@ app.use("/payments", paymentRoutes);
 app.use("/referrals", referralRoutes);
 app.use("/admin", adminRoutes);
 
-// 404 handler
+// SPA fallback — serve index.html for non-API routes
 app.use((req, res) => {
-  res.status(404).json({ error: "Not found" });
+  if (req.path.startsWith("/auth") || req.path.startsWith("/sessions") ||
+      req.path.startsWith("/queue") || req.path.startsWith("/healers") ||
+      req.path.startsWith("/groups") || req.path.startsWith("/payments") ||
+      req.path.startsWith("/referrals") || req.path.startsWith("/admin") ||
+      req.path.startsWith("/api")) {
+    return res.status(404).json({ error: "Not found" });
+  }
+  res.sendFile(path.join(__dirname, "..", "public", "index.html"));
 });
 
 // Global error handler

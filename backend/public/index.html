@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Ennie — Measured Energy Healing</title>
+  <meta name="description" content="Measured energy healing by Charlie Goldsmith. Feel it. Measure it. Believe it." />
+  <meta name="theme-color" content="#8B3FFF" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='11' stroke='%238B3FFF' stroke-width='1.5' fill='none' opacity='.3'/><path d='M12 3C7 3 3 7 3 12s4 9 9 9' stroke='%238B3FFF' stroke-width='1.8' stroke-linecap='round' fill='none'/></svg>" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+    #root { min-height: 100vh; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel" data-type="module" src="/app.jsx"></script>
+  <script type="text/babel">
+    // Boot the app after the module loads
+    const checkAndRender = () => {
+      if (window.EnnieApp) {
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(React.createElement(window.EnnieApp));
+      } else {
+        setTimeout(checkAndRender, 100);
+      }
+    };
+    checkAndRender();
+  </script>
+</body>
+</html>
