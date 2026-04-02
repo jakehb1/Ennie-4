@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "Ennie",
+    "slug": "ennie",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "scheme": "ennie",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#8B3FFF"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ennie.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Ennie needs camera access for testimonial video recording",
+        "NSMicrophoneUsageDescription": "Ennie needs microphone access for voice during healing sessions"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#8B3FFF"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.ennie.app",
+      "permissions": ["CAMERA", "RECORD_AUDIO"]
+    },
+    "plugins": [
+      "expo-font",
+      "expo-router"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "ennie-mobile"
+      }
+    }
+  }
+}
